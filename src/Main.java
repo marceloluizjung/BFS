@@ -19,11 +19,10 @@ class Main {
                 "2 3",
                 "3 3"
         };
-        Graph g = new Graph();
 
         System.out.println("Following is Breadth First Traversal " +
                 "(starting from vertex 2)");
-        g.BFS("2", graph);
+        Graph.BFS("2", graph);
     }
 }
 // This code is contributed by Aakash Hasija

@@ -4,12 +4,8 @@ public class Graph {
     private int V;   // No. of vertices
     private LinkedHashSet<String> verticesList = new LinkedHashSet<>();
 
-    public void addVertices(List<String> vertices) {
-        this.verticesList.addAll(vertices);
-    }
-
     // prints BFS traversal from a given source s
-    public void BFS(String s, String[] graph) {
+    public static void BFS(String s, String[] graph) {
         // Mark all the vertices as not visited(By default
         // set as false)
         HashMap<String, Boolean> visited = new HashMap();
