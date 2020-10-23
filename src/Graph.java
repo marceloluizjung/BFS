@@ -1,8 +1,6 @@
 import java.util.*;
 
 public class Graph {
-    private int V;   // No. of vertices
-    private LinkedHashSet<String> verticesList = new LinkedHashSet<>();
 
     // prints BFS traversal from a given source s
     public static void BFS(String s, String[] graph) {

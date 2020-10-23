@@ -1,9 +1,6 @@
 // Java program to print BFS traversal from a given source vertex.
 // BFS(int s) traverses vertices reachable from s.
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-
 // This class represents a directed graph using adjacency list
 // representation
 //https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
