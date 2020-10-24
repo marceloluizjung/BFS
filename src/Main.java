@@ -1,4 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * @author Marcelo Luiz Jung
@@ -7,31 +11,24 @@ import java.util.HashMap;
 class Main {
 
     public static void main(String args[]) {
-        String[] graph = {
-                "Entrada A",
-                "A F",
-                "F C",
-                "C B",
-                "B D",
-                "C D",
-                "F J",
-                "J H",
-                "H G",
-                "J G",
-                "J *",
-                "* I",
-                "I L",
-                "L M",
-                "M K",
-                "K Saida",
-                "A K",
-                "C E",
-                "E I",
-                "I M"
-        };
+        ArrayList<String> buf = new ArrayList<>();
+
+        try {
+            File file = new File("C:\\temp\\entrada.in");
+            Scanner scanner = new Scanner(file);
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                buf.add(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String[] graph = new String[buf.size()];
+        graph = buf.toArray(graph);
 
         Graph graph1 = new Graph(graph);
-        HashMap<String, Integer> bfsResult = graph1.bfs("*", graph);
+        HashMap<String, Integer> bfsResult = graph1.bfs("*");
         if (bfsResult != null) System.out.println(bfsResult.get("Entrada") + bfsResult.get("Saida"));
     }
 }
