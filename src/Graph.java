@@ -58,12 +58,11 @@ public class Graph {
             // visited and enqueue it
 
             Iterator<String> i = this.adjacencyList.get(s).listIterator();
-            distance++;
             //Nesta lista que aplica o critério
             while (i.hasNext()) {
                 String n = i.next();
                 if (visited.get(n) == null) {
-                    vertexDistance.put(n,distance);
+                    vertexDistance.put(n, vertexDistance.get(s) + 1);
                     visited.put(n, true);
                     queue.add(n);
                 }
