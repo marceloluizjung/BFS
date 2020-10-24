@@ -1,9 +1,39 @@
 import java.util.*;
 
 public class Graph {
+    HashMap<String, List<String>> adjacencyList = new HashMap<>();
+
+    public Graph(String[] graph) {
+        for (int count = 0; count < graph.length; count++) {
+            String[] vertices = graph[count].split(" ");
+            if (adjacencyList.get(vertices[0]) == null) {
+                List<String> adjacencyByVertex = this.getAdjacencyByVertex(vertices[0], graph);
+                this.adjacencyList.put(vertices[0], adjacencyByVertex);
+            }
+            if (adjacencyList.get(vertices[1]) == null) {
+                List<String> adjacencyByVertex = this.getAdjacencyByVertex(vertices[1], graph);
+                this.adjacencyList.put(vertices[1], adjacencyByVertex);
+            }
+
+        }
+    }
+
+    private List<String> getAdjacencyByVertex(String vertex, String[] graph) {
+        List<String> adjByS = new ArrayList<>();
+        for (int count = 0; count < graph.length; count++) {
+            String[] vertices = graph[count].split(" ");
+            if (vertices[0].equals(vertex)) {
+                adjByS.add(vertices[1]);
+            } else if (vertices[1].equals(vertex)) {
+                adjByS.add(vertices[0]);
+            }
+        }
+        Collections.sort(adjByS);
+        return adjByS;
+    }
 
     // prints BFS traversal from a given source s
-    public static void BFS(String s, String[] graph) {
+    public void bfs(String s, String[] graph) {
         // Mark all the vertices as not visited(By default
         // set as false)
         HashMap<String, Boolean> visited = new HashMap();
@@ -24,18 +54,7 @@ public class Graph {
             // If a adjacent has not been visited, then mark it
             // visited and enqueue it
 
-            //Catando os vértices adjacentes (é aqui que aplica a ação de escolher o próximo vértice a ser processado)
-            List<String> adjByS = new ArrayList<>();
-            for (int count = 0; count < graph.length; count++) {
-                String[] vertices = graph[count].split(" ");
-                if (vertices[0].equals(s)) {
-                    adjByS.add(vertices[1]);
-                } else if (vertices[1].equals(s)) {
-                    adjByS.add(vertices[0]);
-                }
-            }
-
-            Iterator<String> i = adjByS.listIterator();
+            Iterator<String> i = this.adjacencyList.get(s).listIterator();
             while (i.hasNext()) {
                 String n = i.next();
                 if (visited.get(n) == null) {
