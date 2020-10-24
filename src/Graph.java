@@ -1,7 +1,9 @@
 import java.util.*;
 
 public class Graph {
-    HashMap<String, List<String>> adjacencyList = new HashMap<>();
+    private HashMap<String, List<String>> adjacencyList = new HashMap<>();
+    private HashMap<String, Integer> vertexDistance = new HashMap<>();
+    private int distance = 0;
 
     public Graph(String[] graph) {
         for (int count = 0; count < graph.length; count++) {
@@ -44,10 +46,11 @@ public class Graph {
         // Marca o nó como visitado
         visited.put(s, true);
         queue.add(s);
-
+        vertexDistance.put(s,distance);
         while (queue.size() != 0) {
             // Remove o vétice da lista
             s = queue.poll();
+
             System.out.print(s + " ");
 
             // Get all adjacent vertices of the dequeued vertex s
@@ -55,9 +58,12 @@ public class Graph {
             // visited and enqueue it
 
             Iterator<String> i = this.adjacencyList.get(s).listIterator();
+            distance++;
+            //Nesta lista que aplica o critério
             while (i.hasNext()) {
                 String n = i.next();
                 if (visited.get(n) == null) {
+                    vertexDistance.put(n,distance);
                     visited.put(n, true);
                     queue.add(n);
                 }

@@ -15,16 +15,22 @@ class Main {
     // Driver method to
     public static void main(String args[]) {
         String[] graph = {
-                "0 1",
-                "0 2",
-                "1 2",
-                "2 0",
-                "2 3",
-                "3 3"
+                "B A",
+                "Entrada A",
+                "B GT",
+                "GT H",
+                "H *",
+                "B *",
+                "* C",
+                "C I",
+                "I D",
+                "C D",
+                "D Saida"
         };
 
         Graph graph1 = new Graph(graph);
-        graph1.bfs("2", graph);
+        graph1.bfs("*", graph);
+        String teste = "Entrada";
     }
 }
 // This code is contributed by Aakash Hasija
