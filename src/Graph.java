@@ -1,5 +1,9 @@
 import java.util.*;
 
+/**
+ * @author Marcelo Luiz Jung
+ * @author Rafael Froeschlin Filho
+ */
 public class Graph {
     private HashMap<String, List<String>> adjacencyList = new HashMap<>();
     private HashMap<String, Integer> vertexDistance = new HashMap<>();
@@ -20,6 +24,11 @@ public class Graph {
         }
     }
 
+    /**
+     * @param vertex
+     * @param graph
+     * @return
+     */
     private List<String> getAdjacencyByVertex(String vertex, String[] graph) {
         List<String> adjByS = new ArrayList<>();
         for (int count = 0; count < graph.length; count++) {
@@ -34,31 +43,20 @@ public class Graph {
         return adjByS;
     }
 
-    // prints BFS traversal from a given source s
-    public void bfs(String s, String[] graph) {
-        // Mark all the vertices as not visited(By default
-        // set as false)
+    /**
+     * @param s
+     * @param graph
+     * @return
+     */
+    public HashMap<String, Integer> bfs(String s, String[] graph) {
         HashMap<String, Boolean> visited = new HashMap();
-
-        // Fila BFS
         LinkedList<String> queue = new LinkedList<String>();
-
-        // Marca o nó como visitado
         visited.put(s, true);
         queue.add(s);
-        vertexDistance.put(s,distance);
+        vertexDistance.put(s, distance);
         while (queue.size() != 0) {
-            // Remove o vétice da lista
             s = queue.poll();
-
-            System.out.print(s + " ");
-
-            // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
-            // visited and enqueue it
-
             Iterator<String> i = this.adjacencyList.get(s).listIterator();
-            //Nesta lista que aplica o critério
             while (i.hasNext()) {
                 String n = i.next();
                 if (visited.get(n) == null) {
@@ -68,5 +66,6 @@ public class Graph {
                 }
             }
         }
+        return this.vertexDistance;
     }
 }

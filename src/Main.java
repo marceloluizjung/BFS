@@ -1,36 +1,37 @@
-// Java program to print BFS traversal from a given source vertex.
-// BFS(int s) traverses vertices reachable from s.
+import java.util.HashMap;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-// This class represents a directed graph using adjacency list
-// representation
-//https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+/**
+ * @author Marcelo Luiz Jung
+ * @author Rafael Froeschlin Filho
+ */
 class Main {
 
-
-
-    // Driver method to
     public static void main(String args[]) {
         String[] graph = {
-                "B A",
                 "Entrada A",
-                "B GT",
-                "GT H",
-                "H *",
-                "B *",
-                "* C",
-                "C I",
-                "I D",
+                "A F",
+                "F C",
+                "C B",
+                "B D",
                 "C D",
-                "D Saida"
+                "F J",
+                "J H",
+                "H G",
+                "J G",
+                "J *",
+                "* I",
+                "I L",
+                "L M",
+                "M K",
+                "K Saida",
+                "A K",
+                "C E",
+                "E I",
+                "I M"
         };
 
         Graph graph1 = new Graph(graph);
-        graph1.bfs("*", graph);
-        String teste = "Entrada";
+        HashMap<String, Integer> bfsResult = graph1.bfs("*", graph);
+        if (bfsResult != null) System.out.println(bfsResult.get("Entrada") + bfsResult.get("Saida"));
     }
 }
-// This code is contributed by Aakash Hasija
