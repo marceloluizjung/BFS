@@ -5,8 +5,8 @@ import java.util.*;
  * @author Rafael Froeschlin Filho
  */
 public class Graph {
-    private final HashMap<String, List<String>> adjacencyList = new HashMap<>();
-    private final HashMap<String, Integer> vertexDistance = new HashMap<>();
+    private HashMap<String, List<String>> adjacencyList = new HashMap<>();
+    private HashMap<String, Integer> vertexDistance = null;
 
     public Graph(String[] graph) {
         for (String s : graph) {
@@ -46,6 +46,7 @@ public class Graph {
      * @return Returns a Map with the distances from a node
      */
     public HashMap<String, Integer> bfs(String s) {
+        this.vertexDistance = new HashMap<>();
         HashMap<String, Boolean> visited = new HashMap<>();
         LinkedList<String> queue = new LinkedList<>();
         visited.put(s, true);

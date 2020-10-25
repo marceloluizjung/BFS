@@ -28,7 +28,10 @@ class Main {
         graph = buf.toArray(graph);
 
         Graph graph1 = new Graph(graph);
-        HashMap<String, Integer> bfsResult = graph1.bfs("*");
-        if (bfsResult != null) System.out.println(bfsResult.get("Entrada") + bfsResult.get("Saida"));
+        //Entrada até o queijo
+        HashMap<String, Integer> bfsResultEnToQj = graph1.bfs("Entrada");
+        //Queijo até a saída
+        HashMap<String, Integer> bfsResultQjToSd = graph1.bfs("*");
+        System.out.println(bfsResultEnToQj.get("*") + bfsResultQjToSd.get("Saida"));
     }
 }
